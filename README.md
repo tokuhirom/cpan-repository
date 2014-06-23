@@ -1,11 +1,13 @@
 # cpan-repository
 
-golang port of App::cpanghq
+    $ cpan-repository LWP::UserAgent
+    https://github.com/libwww-perl/libwww-perl
 
-## Why?
+Get a CPAN repository URL from the module name.
 
-I installed a lot of versions of Perls. I don't want to install the utilities like this per each perl versions.
-Then, I created this golang based version.
+## Why not written in perl?
+
+I don't want to install the module like this for each perl5 versions.
 
 ## Copyright
 
