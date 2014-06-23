@@ -61,7 +61,6 @@ func getRepositoryUrl(module string) (repositoryUrl string, err error) {
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode == 200 {
-		log.Print(resp)
 		body, err := ioutil.ReadAll(resp.Body)
 		err = jsonpath(body, "/release/_source/resources/repository/url", &s)
 		if err != nil {
