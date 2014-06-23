@@ -1,4 +1,4 @@
-# cpan-ghq
+# cpan-repository
 
 golang port of App::cpanghq
 
