@@ -93,7 +93,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			println(url)
+			fmt.Println(url)
 		}
 	} else {
 		bio := bufio.NewReader(os.Stdin)
@@ -108,7 +108,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			println(url)
+			fmt.Println(url)
 		}
 	}
 }
