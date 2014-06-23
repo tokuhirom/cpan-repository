@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
+	"encoding/json"
 	"log"
 	"net/http"
 	"net/url"
@@ -22,11 +24,20 @@ func getRepositoryUrl(module string) (repositoryUrl string, err error) {
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode == 200 {
-		err = scan.ScanJSON(resp.Body, "/distribution", &s)
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return "", err
+		}
+		var v interface{}
+		err = json.Unmarshal(body, &v)
+		if err != nil {
+			return "", err
+		}
+		err = scan.ScanTree(v, "/distribution", &s)
 		if s == "perl" {
 			return "", fmt.Errorf("%q is provided by core module", module)
 		}
-		err = scan.ScanJSON(resp.Body, "/release/_source/resources/repository/url", &s)
+		err = scan.ScanTree(v, "/release/_source/resources/repository/url", &s)
 		if err != nil {
 			return "", err
 		}
