@@ -5,6 +5,10 @@
 
 Get a CPAN repository URL from the module name.
 
+## INSTALL
+
+    go get github.com/tokuhirom/cpan-repository
+
 ## Why not written in perl?
 
 I don't want to install the module like this for each perl5 versions.
